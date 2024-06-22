@@ -13,39 +13,35 @@ function App() {
 
 
   const PasswordGen = useCallback(() => {
-    let pass = ""; //pass isliye bnaya hai k isky andr mn password generate krungi or phr setpassword k zriye isko set krdungi
-    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"; //yh string humny is liye define ki hai k password generate krny k liye hmen kuch to chahye na yani kuch characters to kisi string k andr sy hi to random password generatr hoga to hum is string k andr sy random characters ko pick krengy through loop
-
+    let pass = ""; 
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"; 
     if (numberAllowed) {
-      //yani k agr user numberallowed krta hai uski value true hoti ha to existing string k andr hi number add kr do in mn sy or in mn sy random number ese to ni pick hoga usky liye hmen loop lgana pryga
-      str = str + "0123456789"; //ispy hum loop lga k random number pick kr lengy or usko string mn add kr dengy
+     
+      str = str + "0123456789";
     }
     if (charAllowed) {
-      str = str + "!@#$%^&*()_+-={}[]|:;"; //ispy hum loop lga k random character pick kr lengy or usko string mn add kr lengy
+      str = str + "!@#$%^&*()_+-={}[]|:;"; 
     }
     for (let i = 1; i <= length; i++) {
-      //ab hum yahn neechy wo character bna rhy hain wo password generate kr rhy hain jo hmen display krna ha
-      let char = Math.floor(Math.random() * str.length + 1); //str.length means string length ko access kryga or us mn sy random koi number generate kr dy ga abi srf  aik number aya hai puri string ni ai hmen puri string lani ha
+      
+      let char = Math.floor(Math.random() * str.length + 1); i
       pass = pass + str.charAt(char);
       console.log(pass);
     }
-    setpassword(pass); //phr hum final pass ko setpassword mn set kr dengy
-  }, [length, numberAllowed, charAllowed, setpassword]); //these 4 are dependencies for optimizaton yani k function ko memoize kr lo yh optimization k liye kaam ati hian
-  // why we passed setpassword as a dependency because yh bhi aik dependency hai or yhi main function hai jo hum kai br run krengy yani iski basis py bhi hum cheezon ko change krengy isliye yh bhi dependency hai iski basis py hum br br setpassword kr rhy hain
+    setpassword(pass); 
+  }, [length, numberAllowed, charAllowed, setpassword]); 
+ 
 
   //---------------Function for copying the text--------------------
   const copyPasswordToClipboard = useCallback(() => {
-    // passwrodref ka kaam yh hai 
     passwordRef.current?.select();
     // passwordRef.current?.setSelectionRange(0,3);
-   // clipboard k andr write kr do
     window.navigator.clipboard.writeText(password);
   }, [password]);
 //-------------------------- UseEffect() hook for running our callback function-----------
   useEffect(() => {
     PasswordGen();
-  }, [length, charAllowed, numberAllowed, PasswordGen]); //these 4 are dependencies yani k in 4 cheezon mn sy apny kisi ko b chera to useEffect run hoga  yh function chla do kyn k yh sb is py depend kr rae hain inky liye alag alag function bnany ki zrurt nai h bs yh function memory m store ha jb bhi ap is m sy kisi ko cherogy to react isko render kr dyga
-  // function ko run krny ka goal mera UseEffect() sy achive ho rha ha naa k useCallback() sy kunk useCallback k andr humny wese b srf function definition di hui ha
+  }, [length, charAllowed, numberAllowed, PasswordGen]); //these 4 are dependencies
 
   return (
     <>
