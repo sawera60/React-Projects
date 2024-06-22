@@ -1,28 +1,17 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 
 function App() {
-  //UseState Hook hum tb use krty hain jb humny aik cheez ka data variable mn hold krna hota ha or br br usko change krwana hota ha in future to yahn py mn UseState isliye use kr rhi hun k har aik cheez ki state baad m change hogi yani k default length 8 honi hi chahye password ki jese hum normally dkehty hain lekin wo baad mn change bhi ho skti hai or lenght bar bar track bhi ho rae ha change ho rae ha to jb esa case hota hai k hmen pta hai aik cheez bad m change hogi to hum us case mn usestate hook use krty hain
-  const [length, setlength] = useState(8); //means k default 8 length lazmi hai hi hai
-  const [numberAllowed, setnumberAllowed] = useState(false); //ab number ka bhi yahi scene hai mtlb k number bhi checkbox click krny py track ho rhy hain or br br change ho rhy hain to uska mtlb hai br br change ho rae iski value or br br store ho rhi hai to usky liye hmen phr sy usestate use krna pryga ab yahn py means start mn false apki mrzi ha ap number pasword m rkhna chahty ho ya nai mn start mn usko false hi rkh rae hun taky user agar chahta hai k wo password mn number add kry tb hi kry wrna default value false rhy kun k checkbox click krny py hi number generate ho bs
-  const [charAllowed, setcharAllowed] = useState(false); // ab character ka bhi yhi scene ha means character ki value bhi br br change ho rae ha or change ho k br br track ho rae ha or br br change ho k store ho rae ha iska mtlb yahn bhi hmen usestate ki zrurt hogi store krny k liye or br br track krny k liyeab yahn bhi start mn false apki mrzi ha ap character pasword m rkhna chahty ho ya nai mn start mn usko false hi rkh rae hun
-  const [password, setpassword] = useState(" "); //setpassword ka bhi yahi scene hai means k dekho at the end hmary pass aik pasword bhi to generate ho rha hai na wo bhi to br br change ho rha hai or br br store ho rha to usko br br change krny k liye bhi hmen usestate chahye ab dekho yahn bhi apki marzi hai k ap default koi password dikhana chhaty ho page looad py ya usko khali rkhna chhaty ho to hum baad mn password generate krayengy abi khaali chor rhy
+  
+  const [length, setlength] = useState(8); /
+  const [numberAllowed, setnumberAllowed] = useState(false);
+  const [charAllowed, setcharAllowed] = useState(false); 
+  const [password, setpassword] = useState(" "); 
 
 
-  // ----------- UseCallback ----------//
-  //-------- working of usecallback is below
-  //yani usecallback aik function ko jitna hosky memory m rkh leta hai or phr jb dubara use kro to jitna part krlo jo ni hua wo apki mrzi
-  // ab dekho ap password to generate kr lo gy lekin apko pta hai k apko usko number py click krty hue bhi call krna pryga character py click krty hue bhi call krna pryga length py click krty hue b call krna pryga yani k apko usko br br  call krna pr rha hai to wo br br calculation ho rae ha br br re-rendering ho rae ha jiski wja sy app ki performance slow ho rae ha to usky liye hmen usecallback use krna pryga
-  // useCallback mn apki pass 2 parameters hoti hain 1st function 2nd dependencies jo array form mn hoti hain
-  // now what is depenedencies :
-  //  means jese k hmara pass pasword generate ho rha ha lekin hmen usky liye br br length,number aur characters b require hain to length numbers or characters teeno is function ki dependencies hain yani k in mn sy kisi p b click hoga tb hi yh  function trigger kryga yani k in teeno k change hoty hi yh function dubara run hota hai to zahir hai yh iski depenedencies hain isky ilawa bilawaja br br re-render na kro
-
-                         //----------useREF-------------------//
-                         // jb bhi hmen kisi cheez ka refernce lena hota ha tb useRef use hota ha ismn apko aik variavle bnana prta ha
-                         // •	Useref ki help sy hum DOM ko directly manipulate kr skty hain 
+ 
   const passwordRef = useRef(null);
 
-  // UseCallback () lets you memoize a callback function by preventing it from being recreated on every render means br br function re-created ni hoga br br re-render ni hoga
-  // is case mn humny useCallback isliye use kia hai k dekho hum password generator bnaa rhy hain hamry pass number length character hai or sb k liye hmary pass br br aik hi method run horha ha to us method/function hum memoize kra lengy or usky zriye optimize krwa dengy or srf tb hi run krna jb mn yh sb dependencies dun
+
   const PasswordGen = useCallback(() => {
     let pass = ""; //pass isliye bnaya hai k isky andr mn password generate krungi or phr setpassword k zriye isko set krdungi
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"; //yh string humny is liye define ki hai k password generate krny k liye hmen kuch to chahye na yani kuch characters to kisi string k andr sy hi to random password generatr hoga to hum is string k andr sy random characters ko pick krengy through loop
