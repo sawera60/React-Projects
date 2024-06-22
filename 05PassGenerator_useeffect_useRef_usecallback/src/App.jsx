@@ -7,7 +7,7 @@ function App() {
   const [charAllowed, setcharAllowed] = useState(false); // ab character ka bhi yhi scene ha means character ki value bhi br br change ho rae ha or change ho k br br track ho rae ha or br br change ho k store ho rae ha iska mtlb yahn bhi hmen usestate ki zrurt hogi store krny k liye or br br track krny k liyeab yahn bhi start mn false apki mrzi ha ap character pasword m rkhna chahty ho ya nai mn start mn usko false hi rkh rae hun
   const [password, setpassword] = useState(" "); //setpassword ka bhi yahi scene hai means k dekho at the end hmary pass aik pasword bhi to generate ho rha hai na wo bhi to br br change ho rha hai or br br store ho rha to usko br br change krny k liye bhi hmen usestate chahye ab dekho yahn bhi apki marzi hai k ap default koi password dikhana chhaty ho page looad py ya usko khali rkhna chhaty ho to hum baad mn password generate krayengy abi khaali chor rhy
 
-  // Now are making a password generator
+
   // ----------- UseCallback ----------//
   //-------- working of usecallback is below
   //yani usecallback aik function ko jitna hosky memory m rkh leta hai or phr jb dubara use kro to jitna part krlo jo ni hua wo apki mrzi
